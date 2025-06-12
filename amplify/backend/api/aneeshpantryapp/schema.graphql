@@ -1,0 +1,7 @@
+type PantryItem @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  name: String!
+  category: String
+  quantity: Int
+  lastUpdated: AWSDateTime
+}
