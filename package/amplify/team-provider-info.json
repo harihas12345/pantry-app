@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-aneeshpantryapp-dev-8a6b5-authRole",
+      "UnauthRoleArn": "arn:aws:iam::724772090394:role/amplify-aneeshpantryapp-dev-8a6b5-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::724772090394:role/amplify-aneeshpantryapp-dev-8a6b5-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-aneeshpantryapp-dev-8a6b5-deployment",
+      "UnauthRoleName": "amplify-aneeshpantryapp-dev-8a6b5-unauthRole",
+      "StackName": "amplify-aneeshpantryapp-dev-8a6b5",
+      "StackId": "arn:aws:cloudformation:us-east-2:724772090394:stack/amplify-aneeshpantryapp-dev-8a6b5/9bc09190-46bc-11f0-8616-0acddd048b8b",
+      "AmplifyAppId": "d3ib87kxkb1ddk"
+    },
+    "categories": {
+      "auth": {
+        "aneeshpantryappf7fe7f6c": {}
+      },
+      "api": {
+        "aneeshpantryapp": {}
+      }
+    }
+  }
+}

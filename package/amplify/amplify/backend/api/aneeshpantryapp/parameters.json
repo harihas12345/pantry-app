@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "aneeshpantryapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authaneeshpantryappf7fe7f6c",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
