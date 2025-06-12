@@ -1,20 +1,26 @@
-type PantryItem @model @auth(rules: [{ allow: private }]) {
+type PantryItem
+  @model
+  @auth(rules: [{ allow: private }]) {
   id: ID!
   name: String!
   category: String
   quantity: Int
   lastUpdated: AWSDateTime
-  restockRequests: [RestockRequest] @connection(keyName: "byItem", fields: ["id"])
-  consumptionLogs: [ConsumptionLog] @connection(keyName: "byItem", fields: ["id"])
+
+  restockRequests: [RestockRequest] @hasMany(indexName: "byItem", fields: ["id"])
+  consumptionLogs: [ConsumptionLog] @hasMany(indexName: "byItem", fields: ["id"])
 }
 
 type RestockRequest
   @model
-  @auth(rules: [{ allow: private }])
+  @auth(rules: [
+    { allow: private, operations: [create, update] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ])
   @key(name: "byItem", fields: ["itemID"]) {
   id: ID!
-  itemID: ID!
-  item: PantryItem @connection(fields: ["itemID"])
+  itemID: ID! @index(name: "byItem")
+  item: PantryItem @hasOne(fields: ["itemID"])
   requestedBy: String
   quantity: Int
   status: String
@@ -26,8 +32,8 @@ type ConsumptionLog
   @auth(rules: [{ allow: private }])
   @key(name: "byItem", fields: ["itemID"]) {
   id: ID!
-  itemID: ID!
-  item: PantryItem @connection(fields: ["itemID"])
+  itemID: ID! @index(name: "byItem")
+  item: PantryItem @hasOne(fields: ["itemID"])
   consumedBy: String
   amount: Int
   date: AWSDateTime
